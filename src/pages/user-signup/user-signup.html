@@ -19,24 +19,24 @@
 
     <ion-list no-lines padding-top>
       <ion-item>
-        <ion-input type="text" placeholder="First Name"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.firstname" placeholder="First Name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Last Name"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.lastname" placeholder="Last Name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="email" placeholder="Email"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.username"  placeholder="Username"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+        <ion-input type="password" [(ngModel)]="user.password" placeholder="Password"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button block round color="secondary">Signup</button>
+    <button ion-button block round color="secondary" (click)="signup();">Signup</button>
     <div padding>
-      <button ion-button block color="light" clear (click)="loginPage();">If already have an account ? LOGIN</button>
+      <button ion-button block color="light" (click)="loginPage();">If already have an account ? LOGIN</button>
    </div>
 
 </ion-content>
