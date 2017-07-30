@@ -79,5 +79,18 @@ export class ReportspotPage {
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
     });
+     var geocoder = new google.maps.Geocoder;
+    geocoder.geocode({
+      'location': {
+        lat: marker.position.lat(),
+        lng: marker.position.lng()
+      }
+    }, function (results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          console.log('address', results[0].formatted_address)
+        } 
+      }
+    });
   }
 }
