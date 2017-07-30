@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HelloIonicPage } from '../hello-ionic/hello-ionic'
 import { UserSignupPage } from '../user-signup/user-signup'
 import { SessionService } from '../../providers/session/session';
 import { ReportspotPage } from '../reportspot/reportspot';
@@ -32,13 +31,14 @@ export class UserLoginPage {
 
 
   login() {
-    this.session.login(this.user).subscribe(
+    this.navCtrl.push(ReportspotPage);
+    /*this.session.login(this.user).subscribe(
       (data) => {
         this.navCtrl.push(ReportspotPage);
       },
       (err) => {
         this.error = err;
-      });
+      });*/
   }
 
   signupPage() {

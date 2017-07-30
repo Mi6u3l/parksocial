@@ -9,9 +9,11 @@ import { routes } from './app.routing';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
-import { UserLoginPage } from '../pages/user-login/user-login';
-import { UserSignupPage } from '../pages/user-signup/user-signup';
-import { ReportspotPage } from '../pages/reportspot/reportspot';
+
+import { UserSignupPageModule } from '../pages/user-signup/user-signup.module';
+import { UserLoginPageModule } from '../pages/user-login/user-login.module';
+import { ReportspotPageModule } from '../pages/reportspot/reportspot.module';
+
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -29,10 +31,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
-    UserLoginPage,
-    UserSignupPage,
-    ReportspotPage
+    ListPage
   ],
   imports: [
     BrowserModule,
@@ -41,17 +40,17 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     HttpModule,
     BusyModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    ReportspotPageModule,
+    UserLoginPageModule,
+    UserSignupPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
-    UserLoginPage,
-    UserSignupPage,
-    ReportspotPage
+    ListPage
     
   ],
   providers: [

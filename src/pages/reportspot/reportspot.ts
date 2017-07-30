@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder } from '@ionic-native/native-geocoder';
-import {AlertController} from 'ionic-angular';
+import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
+import { AlertController } from 'ionic-angular';
 
 declare var google;
 
@@ -29,8 +29,9 @@ export class ReportspotPage {
     this.loadMap()
   }
 
-   loadMap(){
+   loadMap() {
     let lat, long;
+
     this.busy = this.geolocation.getCurrentPosition().then((position) => {
       lat = position.coords.latitude;
       long = position.coords.longitude;
@@ -42,31 +43,35 @@ export class ReportspotPage {
       }
 
      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      
-    
-     /*  this.nativeGeocoder.reverseGeocode(lat, long)
-      .then((result: NativeGeocoderReverseResult) => {
-        let message = 'The address is ' + result.street + ' in ' + result.countryCode;
-        let alert = this.alertController.create({
-        title: 'Example',
-        subTitle: message,
-        buttons: ['OK']
-      });
-        alert.present();
-
-      }).catch((error: any) => { 
-        let message = error;
-        let alert = this.alertController.create({
-        title: 'Example',
-        subTitle: message,
-        buttons: ['OK']
-      });
-       alert.present();
-    });*/
     
     }, (err) => {
       console.log(err);
     });
+    let message;
+    let _controller = this.alertController;
+     var geocoder = new google.maps.Geocoder;
+      geocoder.geocode({ 'location': { lat: 38.7106912, lng: -9.243368 } }, function (results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+                console.log('address', results[0].formatted_address)
+                message = results[0].formatted_address;
+                   let alert = _controller.create({
+                  title: 'Example',
+                  subTitle: message,
+                  buttons: ['OK']
+                });
+        alert.present();
+            } else {
+                window.alert('No results found');
+            }
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+
+      
+    });
+
+    
 
    }
 
