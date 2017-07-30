@@ -15,21 +15,19 @@ export class ReportspotPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  busy: Promise<any>;
+  busy: Promise < any > ;
 
-  constructor(public navCtrl: NavController, 
-  public navParams: NavParams, 
-  public geolocation: Geolocation, 
-  private nativeGeocoder: NativeGeocoder,
-  private alertController: AlertController) {
-  }
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public geolocation: Geolocation,
+    private alertController: AlertController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReportspotPage');
     this.loadMap()
   }
 
-   loadMap() {
+  loadMap() {
     let lat, long;
 
     this.busy = this.geolocation.getCurrentPosition().then((position) => {
@@ -41,52 +39,45 @@ export class ReportspotPage {
         zoom: 18,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
-     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    
     }, (err) => {
       console.log(err);
     });
-    let message;
+
+  /*  let message;
     let _controller = this.alertController;
-     var geocoder = new google.maps.Geocoder;
-      geocoder.geocode({ 'location': { lat: 38.7106912, lng: -9.243368 } }, function (results, status) {
-        if (status === google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-                console.log('address', results[0].formatted_address)
-                message = results[0].formatted_address;
-                   let alert = _controller.create({
-                  title: 'Example',
-                  subTitle: message,
-                  buttons: ['OK']
-                });
-        alert.present();
-            } else {
-                window.alert('No results found');
-            }
+    var geocoder = new google.maps.Geocoder;
+    geocoder.geocode({
+      'location': {
+        lat: 38.7106912,
+        lng: -9.243368
+      }
+    }, function (results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          console.log('address', results[0].formatted_address)
+          message = results[0].formatted_address;
+          let alert = _controller.create({
+            title: 'Example',
+            subTitle: message,
+            buttons: ['OK']
+          });
+          alert.present();
         } else {
-            window.alert('Geocoder failed due to: ' + status);
+          window.alert('No results found');
         }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });*/
+  }
 
-      
+  addMarker() {
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
     });
-
-    
-
-   }
-
-   addMarker(){
- 
-  let marker = new google.maps.Marker({
-    map: this.map,
-    animation: google.maps.Animation.DROP,
-    position: this.map.getCenter()
-  });
- 
-  let content = "<h4>Information!</h4>";          
- 
-  
- 
   }
 }
-

@@ -31,14 +31,13 @@ export class UserLoginPage {
 
 
   login() {
-    this.navCtrl.push(ReportspotPage);
-    /*this.session.login(this.user).subscribe(
+    this.session.login(this.user).subscribe(
       (data) => {
         this.navCtrl.push(ReportspotPage);
       },
       (err) => {
         this.error = err;
-      });*/
+      });
   }
 
   signupPage() {
