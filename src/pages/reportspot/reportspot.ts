@@ -1,7 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NativeGeocoder, NativeGeocoderReverseResult } from '@ionic-native/native-geocoder';
 import { AlertController } from 'ionic-angular';
 
 declare var google;
@@ -15,7 +14,10 @@ export class ReportspotPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  busy: Promise < any > ;
+  busy: Promise < any >;
+  address: string;
+  lat: number;
+  lng: number;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,11 +30,7 @@ export class ReportspotPage {
   }
 
   loadMap() {
-    let lat, long;
-
     this.busy = this.geolocation.getCurrentPosition().then((position) => {
-      lat = position.coords.latitude;
-      long = position.coords.longitude;
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: latLng,
@@ -44,33 +42,6 @@ export class ReportspotPage {
     }, (err) => {
       console.log(err);
     });
-
-  /*  let message;
-    let _controller = this.alertController;
-    var geocoder = new google.maps.Geocoder;
-    geocoder.geocode({
-      'location': {
-        lat: 38.7106912,
-        lng: -9.243368
-      }
-    }, function (results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        if (results[0]) {
-          console.log('address', results[0].formatted_address)
-          message = results[0].formatted_address;
-          let alert = _controller.create({
-            title: 'Example',
-            subTitle: message,
-            buttons: ['OK']
-          });
-          alert.present();
-        } else {
-          window.alert('No results found');
-        }
-      } else {
-        window.alert('Geocoder failed due to: ' + status);
-      }
-    });*/
   }
 
   addMarker() {
@@ -79,7 +50,7 @@ export class ReportspotPage {
       animation: google.maps.Animation.DROP,
       position: this.map.getCenter()
     });
-     var geocoder = new google.maps.Geocoder;
+    let geocoder = new google.maps.Geocoder;
     geocoder.geocode({
       'location': {
         lat: marker.position.lat(),
@@ -88,9 +59,21 @@ export class ReportspotPage {
     }, function (results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         if (results[0]) {
-          console.log('address', results[0].formatted_address)
+          this.address = results[0].formatted_address
+          this.lat = marker.position.lat();
+          this.lng = marker.position.lng();
         } 
       }
+    }.bind(this));
+  }
+
+  publishSpot() {
+    let alert = this.alertController.create({
+      title: 'Report free spot',
+      subTitle: 'You have sucessfully reported a free spot at: ' + this.address,
+      buttons: ['OK']
     });
+    console.log(this.lat, this.lng);
+    alert.present();
   }
 }
