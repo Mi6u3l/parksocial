@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Report free spot</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div [ngBusy]="{busy: busy, message: 'Getting your location, please wait...', backdrop: true, delay: 200, minDuration: 600}"></div>
+  <div #map id="map"></div> 
+  <button ion-button block round color="secondary" (click)="addMarker()">Add Marker</button> 
+</ion-content>

@@ -11,12 +11,18 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserSignupPage } from '../pages/user-signup/user-signup';
+import { ReportspotPage } from '../pages/reportspot/reportspot';
 
-
+import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SessionService } from '../providers/session/session';
+
+import {BusyModule} from 'angular2-busy';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -25,13 +31,17 @@ import { SessionService } from '../providers/session/session';
     ItemDetailsPage,
     ListPage,
     UserLoginPage,
-    UserSignupPage
+    UserSignupPage,
+    ReportspotPage
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    BusyModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,14 +50,20 @@ import { SessionService } from '../providers/session/session';
     ItemDetailsPage,
     ListPage,
     UserLoginPage,
-    UserSignupPage
+    UserSignupPage,
+    ReportspotPage
     
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SessionService
+    SessionService,
+    NativeGeocoder,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    
   ]
 })
 export class AppModule {}
