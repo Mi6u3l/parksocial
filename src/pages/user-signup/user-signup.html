@@ -33,6 +33,11 @@
       <ion-item>
         <ion-input type="password" [(ngModel)]="user.password" placeholder="Password"></ion-input>
       </ion-item>
+      <ion-item>
+        Select your picture
+        <ion-icon name="images" on-tap="openGallery()"></ion-icon>
+      </ion-item>
+       
     </ion-list>
     <button ion-button block round color="secondary" (click)="signup();">Signup</button>
     <div padding>

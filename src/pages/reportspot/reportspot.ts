@@ -85,7 +85,6 @@ export class ReportspotPage {
       subTitle: 'You have sucessfully reported a free spot at: ' + this.spot["address"],
       buttons: ['Good Stuff']
     });
-    console.log(this.spot);
     alert.present();
   }
 }

@@ -26,15 +26,14 @@ import { SessionService } from '../providers/session/session';
 import {BusyModule} from 'angular2-busy';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
-
-
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage,
+    ListPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +65,8 @@ import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ParkingSpotProvider
+    ParkingSpotProvider,
+    ImagePicker
     
   ]
 })

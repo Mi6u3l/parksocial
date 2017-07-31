@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SessionService } from '../../providers/session/session';
 import { UserLoginPage } from '../user-login/user-login';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { AlertController } from 'ionic-angular';
+
+
 
 /**
  * Generated class for the UserSignupPage page.
@@ -30,7 +34,9 @@ export class UserSignupPage {
   constructor(
    public navCtrl: NavController, 
    public navParams: NavParams,
-   private session: SessionService) {
+   private session: SessionService,
+   private imagePicker: ImagePicker,
+   private alertController: AlertController,) {
   }
 
   ionViewDidLoad() {
@@ -44,6 +50,21 @@ export class UserSignupPage {
       (err) => {
         this.error = err;
       });
+  }
+
+    openGallery () {
+    let options = {
+      maximumImagesCount: 1,
+    }
+    this.imagePicker.getPictures(options).then(file_uris => {
+      console.log(file_uris);
+      let alert = this.alertController.create({
+      title: 'Report free spot',
+      subTitle: file_uris,
+      buttons: ['Good Stuff']
+    });
+    alert.present();
+    });
   }
 
   loginPage() {
