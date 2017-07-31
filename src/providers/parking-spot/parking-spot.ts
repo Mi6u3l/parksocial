@@ -10,28 +10,28 @@ import { SessionService } from '../../providers/session/session';
 export class ParkingSpotProvider {
   BASE_URL: string = 'http://localhost:3000';
 
-  constructor(public http: Http, 
+constructor(public http: Http, 
       private session: SessionService) {
     console.log('Hello ParkingSpotProvider Provider');
   }
 
-
 createSpot(spot) {
-    console.log(this.session.user);
     return this.http.post(`${this.BASE_URL}/api/parkingspots`, spot, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
-  
-
+ getList() {
+    return this.http.get(`${this.BASE_URL}/api/parkingspots`, this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
 
  handleError(e) {
     return Observable.throw(e.json().message);
   }
 
-
-  private requestOptions(): RequestOptions {
+ private requestOptions(): RequestOptions {
     let headers = new Headers({ 'Authorization': `JWT ${this.session.token}` });
     return new RequestOptions({ headers: headers });
   }

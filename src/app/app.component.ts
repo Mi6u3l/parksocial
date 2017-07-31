@@ -4,6 +4,9 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
+import { ReportspotPage } from '../pages/reportspot/reportspot';
+import { ParkingspotListPage } from '../pages/parkingspot-list/parkingspot-list';
+
 import { UserLoginPage } from '../pages/user-login/user-login';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,6 +33,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
+      { title: 'Available Parking Spots', component: ParkingspotListPage },
+      { title: 'Report Parking Spot', component: ReportspotPage },
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'My First List', component: ListPage }
     ];

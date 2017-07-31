@@ -1,18 +1,28 @@
-<!--
-  Generated template for the ParkingspotListPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>parkingspot-list</ion-title>
+  <ion-navbar hideBackButton>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Available Parking Spots</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
+   <ion-card *ngFor="let spot of spots" (click)="spotTapped($event, spot)">
+     <div class="spot-wrapper" >
+       <div class="spot-userpicture">
+         picture
+       </div>
+       <div class="spot-details">
+         <div class="spot-details-address">
+           {{ spot.address }}
+         </div>
+         <div class="spot-details-hourstate">
+         </div>
+       </div>
+       <div class="spot-arrow">
+         arrow
+       </div>
+     </div>
+    
+  </ion-card>
 </ion-content>

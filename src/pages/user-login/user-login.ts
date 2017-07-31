@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserSignupPage } from '../user-signup/user-signup'
 import { SessionService } from '../../providers/session/session';
-import { ReportspotPage } from '../reportspot/reportspot';
+import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
 
 @IonicPage()
 @Component({
@@ -33,7 +33,7 @@ export class UserLoginPage {
   login() {
     this.session.login(this.user).subscribe(
       (data) => {
-        this.navCtrl.push(ReportspotPage);
+        this.navCtrl.push(ParkingspotListPage);
       },
       (err) => {
         this.error = err;

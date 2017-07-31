@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
+import { ParkingspotDetailPage } from '../parkingspot-detail/parkingspot-detail';
 
 @IonicPage()
 @Component({
@@ -8,12 +9,26 @@ import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
   templateUrl: 'parkingspot-list.html',
 })
 export class ParkingspotListPage {
+  spots: Array<any>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams, 
+  private parkingSpot: ParkingSpotProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ParkingspotListPage');
+      this.parkingSpot.getList()
+      .subscribe((spots) => {
+        console.log(spots);
+        this.spots = spots;
+      });
+  }
+
+
+  spotTapped(event, spot) {
+    this.navCtrl.push(ParkingspotDetailPage, {
+      spot: spot
+    });
   }
 
 }

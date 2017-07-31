@@ -10,11 +10,12 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 
+
 import { UserSignupPageModule } from '../pages/user-signup/user-signup.module';
 import { UserLoginPageModule } from '../pages/user-login/user-login.module';
 import { ReportspotPageModule } from '../pages/reportspot/reportspot.module';
-
-
+import { ParkingspotListPageModule } from '../pages/parkingspot-list/parkingspot-list.module';
+import { ParkingspotDetailPageModule } from '../pages/parkingspot-detail/parkingspot-detail.module';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
@@ -27,12 +28,13 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,9 @@ import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
     NoopAnimationsModule,
     ReportspotPageModule,
     UserLoginPageModule,
-    UserSignupPageModule
+    UserSignupPageModule,
+    ParkingspotListPageModule,
+    ParkingspotDetailPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +56,6 @@ import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage
-    
   ],
   providers: [
     StatusBar,
