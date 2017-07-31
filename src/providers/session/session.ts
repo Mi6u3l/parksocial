@@ -53,11 +53,16 @@ export class SessionService implements CanActivate {
         let json = res.json();
         let token = json.token;
         let user = json.user;
+
+        console.log(user);
         
         if (token) {
           this.token = token;
+
+          console.log("Saving user", user._id, "to", this.user);
+          console.log("Received user", user);
           this.user = {
-            _id: user.id,
+            _id: user._id,
             username: user.username
           }
           this.isAuthenticated = true;

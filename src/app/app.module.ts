@@ -24,6 +24,7 @@ import { SessionService } from '../providers/session/session';
 
 import {BusyModule} from 'angular2-busy';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
     NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ParkingSpotProvider
     
   ]
 })

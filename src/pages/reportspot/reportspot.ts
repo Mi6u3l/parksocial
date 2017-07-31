@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AlertController } from 'ionic-angular';
+import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
+import { SessionService } from '../../providers/session/session';
 
 declare var google;
 
@@ -14,15 +16,20 @@ export class ReportspotPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  busy: Promise < any >;
-  address: string;
-  lat: number;
-  lng: number;
+  busy: Promise <any>;
+  spot: Object = {
+    address: String,
+    lat: Number,
+    lng: Number,
+    userid: Number
+  }
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public geolocation: Geolocation,
-    private alertController: AlertController) {}
+    private alertController: AlertController,
+    private parkingSpot: ParkingSpotProvider,
+    private session: SessionService) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReportspotPage');
@@ -45,6 +52,7 @@ export class ReportspotPage {
   }
 
   addMarker() {
+    console.log('userid', this.session.user);
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
@@ -59,21 +67,25 @@ export class ReportspotPage {
     }, function (results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         if (results[0]) {
-          this.address = results[0].formatted_address
-          this.lat = marker.position.lat();
-          this.lng = marker.position.lng();
+          this.spot.address = results[0].formatted_address
+          this.spot.lat = marker.position.lat();
+          this.spot.lng = marker.position.lng();
+          this.spot.userid = this.session.user._id;
         } 
       }
     }.bind(this));
   }
 
   publishSpot() {
+    this.parkingSpot.createSpot(this.spot).subscribe((res) => {
+          console.log('spot created', res);
+    });
     let alert = this.alertController.create({
       title: 'Report free spot',
-      subTitle: 'You have sucessfully reported a free spot at: ' + this.address,
-      buttons: ['OK']
+      subTitle: 'You have sucessfully reported a free spot at: ' + this.spot["address"],
+      buttons: ['Good Stuff']
     });
-    console.log(this.lat, this.lng);
+    console.log(this.spot);
     alert.present();
   }
 }
