@@ -11,7 +11,7 @@ import { UserLoginPage } from '../pages/user-login/user-login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +27,7 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
   ) {
     this.initializeApp();
 
@@ -38,6 +38,25 @@ export class MyApp {
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'My First List', component: ListPage }
     ];
+
+    this.platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDMwJxhxyZsDg9y7rnpyMXRVCp731RF3ZU",
+        authDomain: "parksocial-175216.firebaseapp.com",
+        databaseURL: "https://parksocial-175216.firebaseio.com",
+        projectId: "parksocial-175216",
+        storageBucket: "parksocial-175216.appspot.com",
+        messagingSenderId: "672473039736"
+
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    });
   }
 
   initializeApp() {

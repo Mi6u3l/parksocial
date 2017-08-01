@@ -27,6 +27,8 @@ import {BusyModule} from 'angular2-busy';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { SentryErrorhandlerProvider } from '../providers/sentry-errorhandler/sentry-errorhandler';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,10 @@ import { ImagePicker } from '@ionic-native/image-picker';
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ParkingSpotProvider,
-    ImagePicker
+    ImagePicker,
+    SentryErrorhandlerProvider,
+    {provide: ErrorHandler, useClass: SentryErrorhandlerProvider},
+    Camera
     
   ]
 })
