@@ -56,20 +56,11 @@ export class UserSignupPage {
       let storageRef = firebase.storage().ref();
       // Create a timestamp as filename
       const filename = Math.floor(Date.now() / 1000);
-  
       // Create a reference to 'images/todays-date.jpg'
       const imageRef = storageRef.child(`images/${filename}.jpg`);
-  
       imageRef.putString(this.captureDataUrl, firebase.storage.StringFormat.DATA_URL).then((snapshot)=> {
           var downloadURL = snapshot.downloadURL;
-          let alert = this.alertController.create({
-          title: 'Report free spot',
-          subTitle: downloadURL,
-          buttons: ['Good Stuff']
-        });
-          alert.present();
       });
-  
     }
   
     capture() {
