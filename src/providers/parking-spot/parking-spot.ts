@@ -8,7 +8,7 @@ import { SessionService } from '../../providers/session/session';
 
 @Injectable()
 export class ParkingSpotProvider {
-  BASE_URL: string = 'http://localhost:3000';
+  BASE_URL: string = 'https://parksocial.herokuapp.com';//'http://localhost:3000';
 
 constructor(public http: Http, 
       private session: SessionService) {

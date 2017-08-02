@@ -7,14 +7,14 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-   <ion-card *ngFor="let spot of spots" (click)="spotTapped($event, spot)">
+   <ion-card class="spot-card" *ngFor="let spot of spots" (click)="spotTapped($event, spot)">
      <div class="spot-wrapper" >
        <div class="spot-userpicture">
-         picture
+         <image-loader [src]="spot.user.picture"></image-loader>
        </div>
        <div class="spot-details">
          <div class="spot-details-address">
-           {{ spot.address }}
+           {{ spot.parkingSpot.address }}
          </div>
          <div class="spot-details-hourstate">
          </div>

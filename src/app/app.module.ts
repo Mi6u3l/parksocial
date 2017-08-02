@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -29,6 +29,7 @@ import { ParkingSpotProvider } from '../providers/parking-spot/parking-spot';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { SentryErrorhandlerProvider } from '../providers/sentry-errorhandler/sentry-errorhandler';
 import { Camera } from '@ionic-native/camera';
+import { ImageLoaderComponent } from '../components/image-loader/image-loader'
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { Camera } from '@ionic-native/camera';
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
   ],
   providers: [
     StatusBar,
@@ -73,6 +74,8 @@ import { Camera } from '@ionic-native/camera';
     {provide: ErrorHandler, useClass: SentryErrorhandlerProvider},
     Camera
     
-  ]
+  ],	
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 export class AppModule {}

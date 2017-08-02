@@ -15,7 +15,7 @@ export class ParkingspotDetailPage {
   }
 
   ionViewDidLoad() {
-    this.staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&markers=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true`;
+    this.staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${this.selectedSpot['parkingSpot']['latitude']},${this.selectedSpot['parkingSpot']['longitude']}&markers=${this.selectedSpot['parkingSpot']['latitude']},${this.selectedSpot['parkingSpot']['longitude']}&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true`;
   }
 
 }

@@ -6,6 +6,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { AlertController } from 'ionic-angular';
 import firebase from 'firebase';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import Raven from 'raven-js';
 
 
 @IonicPage()
@@ -21,7 +22,8 @@ export class UserSignupPage {
     lastname: '',
     email: '',
     username: '',
-    password: ''
+    password: '',
+    picture: ''
   }
 
   userPictureURI: any;
@@ -43,23 +45,27 @@ export class UserSignupPage {
   }
 
   signup() {
-    this.session.signup(this.user).subscribe(
-      (data) => {
-       
-      },
-      (err) => {
-        this.error = err;
-      });
+    this.userPictureUpload().then(() => {
+      Raven.captureMessage(this.user["picture"], { level: 'info' });
+      this.session.signup(this.user).subscribe(
+        (data) => {
+         
+        },
+        (err) => {
+          this.error = err;
+        });
+    });
   }
 
-    upload() {
+    userPictureUpload() {
+      let downloadURL;
       let storageRef = firebase.storage().ref();
       // Create a timestamp as filename
       const filename = Math.floor(Date.now() / 1000);
       // Create a reference to 'images/todays-date.jpg'
       const imageRef = storageRef.child(`images/${filename}.jpg`);
-      imageRef.putString(this.captureDataUrl, firebase.storage.StringFormat.DATA_URL).then((snapshot)=> {
-          var downloadURL = snapshot.downloadURL;
+      return imageRef.putString(this.captureDataUrl, firebase.storage.StringFormat.DATA_URL).then((snapshot) => {
+          this.user["picture"] = snapshot.downloadURL;
       });
     }
   
