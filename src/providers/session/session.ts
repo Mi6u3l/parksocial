@@ -7,7 +7,7 @@ import { Router, CanActivate } from '@angular/router';
 
 @Injectable()
 export class SessionService implements CanActivate {
-  BASE_URL: string = 'https://parksocial.herokuapp.com'; //'http://localhost:3000'; 
+  BASE_URL: string = 'http://localhost:3000'; //'https://parksocial.herokuapp.com';;
 
   public user = {};
   public token = '';
