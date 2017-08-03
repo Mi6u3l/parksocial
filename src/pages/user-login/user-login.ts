@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { UserSignupPage } from '../user-signup/user-signup'
 import { SessionService } from '../../providers/session/session';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -10,7 +11,7 @@ import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
   templateUrl: 'user-login.html',
 })
 export class UserLoginPage {
-
+  login: FormGroup;
   user: Object = {
     username: '',
     password: '',
@@ -22,7 +23,10 @@ export class UserLoginPage {
     public navParams: NavParams,
     private session: SessionService
 ) {
-
+     this.login = new FormGroup({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
   }
 
   ionViewDidLoad() {
@@ -30,7 +34,9 @@ export class UserLoginPage {
   }
 
 
-  login() {
+  doLogin() {
+    this.user['username'] = this.login.controls.username.value;
+    this.user['password'] = this.login.controls.password.value;
     this.session.login(this.user).subscribe(
       (data) => {
         this.navCtrl.push(ParkingspotListPage);

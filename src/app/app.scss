@@ -1,16 +1,84 @@
-// http://ionicframework.com/docs/theming/
+.toolbar-title-md {
+    color: #fff;
+}
 
+.auth-header .toolbar-background {
+    border: none !important;
+    background-color: #00e9d5;
+}
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+.auth-content
+{
+	padding: 16px 6%;
+	
+	.scroll-content
+	{
+		padding: 16px 6%;
+	}
+
+	.auth-title
+	{
+		color: #ae75e7;
+		margin-top: 10px;
+		margin-bottom: 25px;
+	}
+
+	.auth-form
+	{
+		ion-item {
+		
+
+			&.item
+			{
+				input[type="password"].text-input
+				{
+					padding-right: 6rem;
+				}
+			}
+		}
+
+		.auth-action-button
+		{
+		
+            margin: 0px;
+            margin-top: 20px;
+            border-radius: 6px;
+            color: #FFFFFF;
+            background-color: #00e9d5;
+            font-size: 1.6rem;
+            font-weight: 500;
+			
+		}
+
+		.show-hide-password
+		{
+			.type-toggle
+			{
+				color: #fff;
+				margin: 0px;
+				padding: 0px 6px;
+				text-align: right;
+			}
+		}
+	}
+
+	.auth-divider
+	{
+		font-size: 1.6rem;
+		color: #fff;
+		margin: 20px 0px;
+		text-align: center;
+	}
+
+	.facebook-auth-button
+	{
+		margin: 0px;
+        border-radius: 6px;
+        color: #FFFFFF;
+        background-color: #3b5998;
+        font-size: 1.6rem;
+        font-weight: 500;
+	
+	}
+
+}

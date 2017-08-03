@@ -1,0 +1,14 @@
+login-page .login-content .alt-options .button {
+  margin: 0px;
+  padding: 0px;
+  font-size: 1.4rem;
+}
+
+login-page .login-content .alt-options .forgot-button {
+  color: #fff;
+}
+
+login-page .login-content .alt-options .signup-button {
+  font-weight: 500;
+  color: #ae75e7;
+}
