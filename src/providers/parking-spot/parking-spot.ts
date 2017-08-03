@@ -8,7 +8,7 @@ import { SessionService } from '../../providers/session/session';
 
 @Injectable()
 export class ParkingSpotProvider {
-  BASE_URL: string = 'https://parksocial.herokuapp.com';//http://localhost:3000
+  BASE_URL: string = 'https://parksocial.herokuapp.com'; //'http://localhost:3000';
 
 constructor(public http: Http, 
       private session: SessionService) {
@@ -29,6 +29,20 @@ createSpot(spot) {
       .map((res) => res.json())
       .catch(this.handleError);
   }
+
+  freeSpot(user, parkingspotId) {
+    console.log('parkingspotid', parkingspotId);
+     return this.http.put(`${this.BASE_URL}/api/parkingspot/${parkingspotId}`, user,  this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+
+  getMyParkingSpot(userid) {
+    return this.http.get(`${this.BASE_URL}/api/parkingspot/${userid}`, this.requestOptions())
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+
 
  getList() {
     return this.http.get(`${this.BASE_URL}/api/parkingspots`, this.requestOptions())

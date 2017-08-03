@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar hideBackButton>
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Parking Spot</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+ <div class="spot-detail-address" *ngIf="selectedSpot">
+  {{ selectedSpot.address }}
+  </div>
+ <div>
+  <img [src]="staticMapUrl" />
+</div>
+<button ion-button block round color="secondary" (click)="freeMySpot()">Free my spot</button> 
+<button ion-button block round color="secondary" (click)="navigateToSpot()">Navigate to Spot</button> 
+</ion-content>

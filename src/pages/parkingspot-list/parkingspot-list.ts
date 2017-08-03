@@ -26,18 +26,22 @@ export class ParkingspotListPage {
   ionViewDidLoad() {
       this.parkingSpot.getList()
       .subscribe((spots) => {
-        this.spots = spots;  
-        this.geolocation.getCurrentPosition().then((position) => {
+       return this.geolocation.getCurrentPosition().then((position) => {
           console.log(position);
-          this.spots.forEach((spot) => {
+          spots.forEach((spot) => {
             let distance = this.parkingSpot.getDistanceFromLatLonInKm(
               position.coords.latitude,
               position.coords.longitude,
               spot['parkingSpot']['latitude'],
               spot['parkingSpot']['longitude'])
-              spot['parkingSpot']['distance'] = distance.toFixed(1)
+              spot['parkingSpot']['distance'] = distance.toFixed(1);
+              return spots;
           });
           this.canRender = true;
+        }).then(() => {
+          this.spots = spots.sort((a, b) => {
+              return a['parkingSpot']['distance'] > b['parkingSpot']['distance'];
+          });
         });   
      });   
   }

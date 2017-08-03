@@ -6,6 +6,7 @@ import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import { ReportspotPage } from '../pages/reportspot/reportspot';
 import { ParkingspotListPage } from '../pages/parkingspot-list/parkingspot-list';
+import { ParkingspotMyPage } from '../pages/parkingspot-my/parkingspot-my';
 
 import { UserLoginPage } from '../pages/user-login/user-login';
 
@@ -35,8 +36,7 @@ export class MyApp {
     this.pages = [
       { title: 'Available Parking Spots', component: ParkingspotListPage },
       { title: 'Report Parking Spot', component: ReportspotPage },
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'My Parking Spot', component: ParkingspotMyPage }
     ];
 
     this.platform.ready().then(() => {
