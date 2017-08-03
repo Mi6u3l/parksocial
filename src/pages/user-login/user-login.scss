@@ -1,4 +1,4 @@
-login-page {
+page-user-login {
 	.login-content
 	{
 		.alt-options
@@ -10,26 +10,11 @@ login-page {
 				font-size: 1.4rem;
 			}
 
-			.forgot-button
-			{
-				color: #fff;
-
-				.button-inner
-				{
-				
-				}
-			}
 
 			.signup-button
 			{
 				font-weight: 500;
 				color: #ae75e7;
-;
-
-				.button-inner
-				{
-					
-				}
 			}
 		}
 	}
