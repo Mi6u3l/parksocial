@@ -1,56 +1,62 @@
 page-parkingspot-list {
-    ion-slides { 
-            height: 70px;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
+  .toolbar-background-md {
+    	background-color: #00e9d5;
+	}
+
+    .item-avatar {
+        padding-right: 5px;
+        max-width: 100px;
+        text-align: center;
+    }
+
+    .avatar-image {
+        border-radius: 50%;
+        height: 46px;
+    }
+
+    .item-content {
+        width: 220px;
+        padding-left: 20px;
+    }
+
+	.list-mini-content
+	{
+	
+		.list-mini
+		{
+	
+			ion-list {
+				.list-item
+				{
+					.content-row
+					{
+						.item-title{
+							overflow: hidden;
+							text-overflow: ellipsis;
+							white-space: nowrap;
+                            color:#ae75e7;
+						}
+
+    
+						&.one-line
+						{
+							
+							.item-description
+							{
+								overflow: hidden;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+							}
+						}
+
+                        .item-icon {
+                            text-align: right;
+                        }
+					}
+				}
+			}
+		}
+	}
 }
 
-.card-ios {
-    margin:0px;
-    margin-bottom: 10px;
-    width: 100%;
-    height: 80px;
-}
-
-.spot-wrapper {
-    display: inline;
-}
-
-.spot-userpicture {
-    display: inline-block;
-    width: 24%;
- 
-}
-.spot-userpicture img {
-    width: 50px;
-    height: 50px;
-}
-
-.spot-card {
-    height: 80px;
-}
-
-.spot-details {
-    display: inline-block;
-    width: 60%;
-}
-
-.spot-details-address {
-
-}
-
-.spot-details-hourstate {
-
-}
-
-.spot-arrow {
-    display: inline-block;
-   
-}
-
-
-.img-loaded + ion-spinner {
-  display:none;
-}
 

@@ -6,26 +6,30 @@
     <ion-title>Available Parking Spots</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-  <div *ngIf="canRender">
-   <ion-card class="spot-card" *ngFor="let spot of spots" (click)="spotTapped($event, spot)">
-     <div class="spot-wrapper" >
-       <div class="spot-userpicture">
-         <image-loader [src]="spot.user.picture"></image-loader>
-       </div>
-       <div class="spot-details">
-         <div class="spot-details-address">
-           {{ spot.parkingSpot.address }}
-         </div>
-         <div class="spot-details-hourstate">
-         </div>
-       </div>
-       <div class="spot-arrow">
-         Distance: {{ spot.parkingSpot.distance }} km
-       </div>
-     </div>
-  </ion-card>
+
+<ion-content class="list-mini-content">
+
+<div *ngIf="canRender">
+ <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let spot of spots" (click)="spotTapped($event, spot)">
+        <ion-row no-padding class="content-row one-line">
+          <ion-col no-padding width-18 class="item-avatar">
+            <image-loader [src]="spot.user.picture"></image-loader>
+             <p class="item-description">{{ spot.user.username }} </p>
+          </ion-col>
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title"> {{ spot.parkingSpot.address }}</h3>
+            <p class="item-description">Distance: {{ spot.parkingSpot.distance }} km</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
   </div>
+</div>
 </ion-content>
 <ion-content padding  *ngIf="!canRender">
   <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
