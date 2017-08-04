@@ -2,6 +2,14 @@
   color: #fff;
 }
 
+.toolbar-background-md {
+  background-color: #00e9d5;
+}
+
+.toolbar-background {
+  background-color: #00e9d5;
+}
+
 .auth-header .toolbar-background {
   border: none !important;
   background-color: #00e9d5;

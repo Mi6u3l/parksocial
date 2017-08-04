@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SessionService } from '../../providers/session/session';
 import { UserLoginPage } from '../user-login/user-login';
-import { ImagePicker } from '@ionic-native/image-picker';
-import { AlertController } from 'ionic-angular';
 import firebase from 'firebase';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
@@ -36,8 +34,6 @@ export class UserSignupPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private session: SessionService,
-    private imagePicker: ImagePicker,
-    private alertController: AlertController,
     private camera: Camera) {
       this.signup = new FormGroup({
       firstname: new FormControl('', Validators.required),
@@ -78,7 +74,6 @@ export class UserSignupPage {
   }
 
     userPictureUpload() {
-      let downloadURL;
       let storageRef = firebase.storage().ref();
       // Create a timestamp as filename
       const filename = Math.floor(Date.now() / 1000);

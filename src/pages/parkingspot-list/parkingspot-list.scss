@@ -4,19 +4,21 @@ page-parkingspot-list {
 	}
 
     .item-avatar {
-        padding-right: 5px;
+        padding-right: 0px;
         max-width: 100px;
+        padding-right: 15px;
         text-align: center;
     }
 
     .avatar-image {
         border-radius: 50%;
-        height: 46px;
+         height: 50px;
+         width: 50px;
+
     }
 
     .item-content {
         width: 220px;
-        padding-left: 20px;
     }
 
 	.list-mini-content

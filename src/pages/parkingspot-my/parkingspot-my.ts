@@ -4,7 +4,7 @@ import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
 import { SessionService } from '../../providers/session/session';
 import { AlertController } from 'ionic-angular';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
-import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 /**
  * Generated class for the ParkingspotMyPage page.
  *

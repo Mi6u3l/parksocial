@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
 import { AlertController } from 'ionic-angular';
 import { SessionService } from '../../providers/session/session';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
-import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 
 
 @IonicPage()
@@ -21,7 +21,6 @@ export class ParkingspotDetailPage {
   private parkingSpot: ParkingSpotProvider,
   private alertController: AlertController,
   private session: SessionService,
-  private platform: Platform,
   private launchnavigator: LaunchNavigator,) {
     this.selectedSpot = navParams.get('spot');
   }

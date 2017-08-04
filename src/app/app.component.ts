@@ -1,9 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
-
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
 import { ReportspotPage } from '../pages/reportspot/reportspot';
 import { ParkingspotListPage } from '../pages/parkingspot-list/parkingspot-list';
 import { ParkingspotMyPage } from '../pages/parkingspot-my/parkingspot-my';

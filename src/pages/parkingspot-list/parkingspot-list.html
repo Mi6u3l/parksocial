@@ -12,7 +12,7 @@
 <div *ngIf="canRender">
  <div class="list-mini">
     <ion-list>
-      <button class="list-item" ion-item *ngFor="let spot of spots" (click)="spotTapped($event, spot)">
+      <button class="list-item" ion-item *ngFor="let spot of spots | orderByDistance" (click)="spotTapped($event, spot)">
         <ion-row no-padding class="content-row one-line">
           <ion-col no-padding width-18 class="item-avatar">
             <image-loader [src]="spot.user.picture"></image-loader>
@@ -21,9 +21,6 @@
           <ion-col no-padding width-72 class="item-content">
             <h3 class="item-title"> {{ spot.parkingSpot.address }}</h3>
             <p class="item-description">Distance: {{ spot.parkingSpot.distance }} km</p>
-          </ion-col>
-          <ion-col no-padding width-10 class="item-icon">
-            <ion-icon name="arrow-forward"></ion-icon>
           </ion-col>
         </ion-row>
       </button>

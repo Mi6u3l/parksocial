@@ -3,19 +3,20 @@ page-parkingspot-list .toolbar-background-md {
 }
 
 page-parkingspot-list .item-avatar {
-  padding-right: 5px;
+  padding-right: 0px;
   max-width: 100px;
+  padding-right: 15px;
   text-align: center;
 }
 
 page-parkingspot-list .avatar-image {
   border-radius: 50%;
-  height: 46px;
+  height: 50px;
+  width: 50px;
 }
 
 page-parkingspot-list .item-content {
   width: 220px;
-  padding-left: 20px;
 }
 
 page-parkingspot-list .list-mini-content .list-mini ion-list .list-item .content-row .item-title {
