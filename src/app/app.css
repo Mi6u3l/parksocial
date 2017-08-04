@@ -1,3 +1,15 @@
+.user-picture-wrapper {
+  height: 120px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.user-picture {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
 .toolbar-title-md {
   color: #fff;
 }

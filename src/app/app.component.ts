@@ -10,6 +10,7 @@ import { UserLoginPage } from '../pages/user-login/user-login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import firebase from 'firebase';
+import { SessionService } from '../providers/session/session';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,15 +21,19 @@ export class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage = UserLoginPage;
   pages: Array<{title: string, component: any}>;
-
+  currentUserImageUrl: any;
+  renderImage: boolean;
+   
   constructor(
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
+    public session: SessionService
   ) {
     this.initializeApp();
 
+    
     // set our app's pages
     this.pages = [
       { title: 'Available Parking Spots', component: ParkingspotListPage },
@@ -36,6 +41,7 @@ export class MyApp {
       { title: 'My Parking Spot', component: ParkingspotMyPage }
     ];
 
+   
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -62,7 +68,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
+  }
+
+  menuOpened() {
+    this.currentUserImageUrl = this.session.user['picture'];
+    this.renderImage = true;
   }
 
   openPage(page) {
@@ -71,4 +83,6 @@ export class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
+  
 }

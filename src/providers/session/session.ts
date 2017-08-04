@@ -47,6 +47,7 @@ export class SessionService implements CanActivate {
     }
   }
 
+
   login(user) {
     return this.http.post(`${this.BASE_URL}/login`, user)
       .map(res => {
@@ -54,8 +55,6 @@ export class SessionService implements CanActivate {
         let token = json.token;
         let user = json.user;
 
-        console.log(user);
-        
         if (token) {
           this.token = token;
 
@@ -63,7 +62,8 @@ export class SessionService implements CanActivate {
           console.log("Received user", user);
           this.user = {
             _id: user._id,
-            username: user.username
+            username: user.username,
+            picture: user.picture
           }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
