@@ -7,6 +7,14 @@
   background-color: #00e9d5;
 }
 
+.back-button.show-back-button {
+  color: #fff;
+}
+
+.back-button.show-back-button:hover {
+  color: #fff;
+}
+
 .auth-content {
   padding: 16px 6%;
 }

@@ -1,47 +1,42 @@
-<ion-header >
-  <ion-navbar  hideBackButton="true">
-    <ion-buttons end>
-     <button ion-button icon-right color="light" (click)="dashboardPage()">SKIP<ion-icon name="ios-arrow-forward"></ion-icon></button>
-   </ion-buttons>
+<ion-header class="signup-header auth-header">
+  <ion-navbar>
+    <ion-title>Sign up</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col><button ion-button block class="facebookButton"> Facebook</button></ion-col>
-        <ion-col><button ion-button block class="instagramButton"> Instagram</button></ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <div class="hrLine"><span>Or</span></div>
-
-    <ion-list no-lines padding-top>
+<ion-content class="signup-content auth-content">
+  <h2 class="auth-title">Create an account</h2>
+  <form class="signup-form auth-form" [formGroup]="signup" (ngSubmit)="doSignup()">
+     <ion-item>
+      <ion-input type="text" placeholder="First Name" formControlName="firstname"></ion-input>
+    </ion-item>
+     <ion-item>
+      <ion-input type="text" placeholder="Last Name" formControlName="lastname"></ion-input>
+    </ion-item>
+     <ion-item>
+      <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
+    </ion-item>
       <ion-item>
-        <ion-input type="text" [(ngModel)]="user.firstname" placeholder="First Name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input type="text" [(ngModel)]="user.lastname" placeholder="Last Name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input type="text" [(ngModel)]="user.username"  placeholder="Username"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input type="email" [(ngModel)]="user.email" placeholder="Email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input type="password" [(ngModel)]="user.password" placeholder="Password"></ion-input>
-      </ion-item>
-      <ion-item>
-        Select your picture
+        <ion-input type="text" placeholder="Picture Link" formControlName="picture" ></ion-input>
+    </ion-item>
+     <ion-item>
+        Select your picture:
         <ion-icon name="images" on-tap="capture()"></ion-icon>
-      </ion-item>
-       
-    </ion-list>
-    <button ion-button block round color="secondary" (click)="signup();">Signup</button>
-    <div padding>
-      <button ion-button block color="light" (click)="loginPage();">If already have an account ? LOGIN</button>
-   </div>
-
+    </ion-item>
+    
+     <p *ngIf="error">
+        {{ error }}
+      </p>
+    <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="!signup.valid">Sign up</button>
+  </form>
+  <p class="auth-divider">
+    Or
+  </p>
+  <button ion-button block class="facebook-auth-button" (click)="doFacebookSignup()">Sign up with Facebook</button>
 </ion-content>
