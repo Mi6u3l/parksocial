@@ -5,6 +5,7 @@ import { ReportspotPage } from '../pages/reportspot/reportspot';
 import { ParkingspotListPage } from '../pages/parkingspot-list/parkingspot-list';
 import { ParkingspotMyPage } from '../pages/parkingspot-my/parkingspot-my';
 import { SettingsPage } from '../pages/settings/settings';
+import { NotificationsPage } from '../pages/notifications/notifications';
 
 import { UserLoginPage } from '../pages/user-login/user-login';
 
@@ -40,7 +41,9 @@ export class MyApp {
       { title: 'Available Parking Spots', component: ParkingspotListPage },
       { title: 'Report Parking Spot', component: ReportspotPage },
       { title: 'My Parking Spot', component: ParkingspotMyPage },
-      { title: 'Settings', component: SettingsPage }
+      { title: 'My Notifications', component: NotificationsPage },
+      { title: 'Settings', component: SettingsPage },
+      
     ];
 
    

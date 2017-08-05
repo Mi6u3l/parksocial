@@ -18,6 +18,10 @@ import { ParkingspotListPageModule } from '../pages/parkingspot-list/parkingspot
 import { ParkingspotDetailPageModule } from '../pages/parkingspot-detail/parkingspot-detail.module';
 import { ParkingspotMyPageModule } from '../pages/parkingspot-my/parkingspot-my.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
+import { NotificationsPageModule } from '../pages/notifications/notifications.module';
+import { AutocompleteComponent } from '../components/autocomplete/autocomplete';
+
+
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
@@ -54,7 +58,8 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     ParkingspotListPageModule,
     ParkingspotDetailPageModule,
     ParkingspotMyPageModule,
-    SettingsPageModule
+    SettingsPageModule,
+    NotificationsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -62,6 +67,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
+    AutocompleteComponent
   ],
   providers: [
     StatusBar,
