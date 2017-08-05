@@ -83,7 +83,7 @@ export class ReportspotPage {
     let alert = this.alertController.create({
       title: 'Report free spot',
       subTitle: 'You have sucessfully reported a free spot at: ' + this.spot["address"],
-      buttons: ['Good Stuff']
+      buttons: ['Thanks for sharing']
     });
     alert.present();
   }

@@ -4,7 +4,9 @@ import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
 import { AlertController } from 'ionic-angular';
 import { SessionService } from '../../providers/session/session';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
+import { ParkingspotMyPage } from '../parkingspot-my/parkingspot-my';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
+
 
 
 @IonicPage()
@@ -59,7 +61,7 @@ export class ParkingspotDetailPage {
  }
 
   redirect() {
-    this.navCtrl.push(ParkingspotListPage);
+    this.navCtrl.push(ParkingspotMyPage);
   }
 
 }

@@ -16,6 +16,9 @@
     <div>
       <img [src]="staticMapUrl" />
     </div>
+    <div class="">
+     You have been parked on this spot since: {{ datetime }}
+    </div>
     <button class="action-button" (click)="freeMySpot()">Free my spot</button>
     <button class="action-button" (click)="navigateToSpot()">Navigate to Spot</button>
   </div>

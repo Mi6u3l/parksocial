@@ -20,6 +20,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
 export class ParkingspotMyPage {
   selectedSpot: { address: string, latitude: number, longitude: number };
   staticMapUrl:string;
+  datetime: string;
   
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
@@ -34,6 +35,7 @@ export class ParkingspotMyPage {
      this.parkingSpot.getMyParkingSpot(this.session.user['_id']).subscribe((parkingSpot) => {
        if (parkingSpot.length > 0) {
          this.selectedSpot = parkingSpot[0];
+         this.datetime = new Date(this.selectedSpot['updated_at']).toString();
          this.staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&markers=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true`;
        }
     });  
