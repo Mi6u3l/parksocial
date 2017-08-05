@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ParkingSpotProvider } from '../../providers/parking-spot/parking-spot';
 import { ParkingspotDetailPage } from '../parkingspot-detail/parkingspot-detail';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SessionService } from '../../providers/session/session';
 
 
 @IonicPage()
@@ -19,7 +20,8 @@ export class ParkingspotListPage {
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   private parkingSpot: ParkingSpotProvider,
-  private geolocation: Geolocation) {
+  private geolocation: Geolocation,
+  private session: SessionService) {
   }
 
   ionViewDidLoad() {
@@ -32,9 +34,11 @@ export class ParkingspotListPage {
                   position.coords.longitude,
                   spot['parkingSpot']['latitude'],
                   spot['parkingSpot']['longitude']).toFixed(1) //);
-          });     
+          })     
       }).then(() => {
-          this.spots = _spots; 
+          this.spots = _spots.filter((spot) => {
+              return spot['parkingSpot']['distance'] <= this.session.distance;
+          });
           this.canRender = true;
       });
     });

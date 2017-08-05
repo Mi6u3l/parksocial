@@ -1,7 +1,6 @@
-
 <ion-header>
   <ion-navbar hideBackButton>
-     <button ion-button menuToggle>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>My Parking Spot</ion-title>
@@ -10,12 +9,17 @@
 
 
 <ion-content padding>
- <div class="spot-detail-address" *ngIf="selectedSpot">
-  {{ selectedSpot.address }}
+  <div *ngIf="selectedSpot">
+    <div class="spot-detail-address">
+      {{ selectedSpot.address }}
+    </div>
+    <div>
+      <img [src]="staticMapUrl" />
+    </div>
+    <button class="action-button" (click)="freeMySpot()">Free my spot</button>
+    <button class="action-button" (click)="navigateToSpot()">Navigate to Spot</button>
   </div>
- <div>
-  <img [src]="staticMapUrl" />
-</div>
-<button ion-button block round color="secondary" (click)="freeMySpot()">Free my spot</button> 
-<button ion-button block round color="secondary" (click)="navigateToSpot()">Navigate to Spot</button> 
+  <div class="myspot-noparking" *ngIf="!selectedSpot">
+      You haven't parked anywhere yet. Bummer...
+    </div>
 </ion-content>

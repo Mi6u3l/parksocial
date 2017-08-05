@@ -32,9 +32,10 @@ export class ParkingspotMyPage {
 
   ionViewDidLoad() {
      this.parkingSpot.getMyParkingSpot(this.session.user['_id']).subscribe((parkingSpot) => {
-       this.selectedSpot = parkingSpot[0];
-       console.log(this.selectedSpot.address);
-       this.staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&markers=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true`;
+       if (parkingSpot.length > 0) {
+         this.selectedSpot = parkingSpot[0];
+         this.staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&markers=${this.selectedSpot['latitude']},${this.selectedSpot['longitude']}&zoom=17&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true`;
+       }
     });  
   }
 

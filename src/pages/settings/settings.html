@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="settings-title">
+    Parking spots distance from my position:
+  </div>
+  <form [formGroup]="rangeForm">
+    <ion-label>
+      <h3 class="distance-label">{{rangeForm.controls.single.value}} Km</h3>
+    </ion-label>
+    <ion-range  formControlName="single" (ionChange)="rangeChange($event)" min="0" max="10" step="1"  pin="false"></ion-range>
+  </form>
+</ion-content>

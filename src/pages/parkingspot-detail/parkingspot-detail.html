@@ -5,22 +5,23 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Parking Spot Detail</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
+  <div class="spot-detail-address">
+  {{ selectedSpot.parkingSpot.address }}
+  </div>
   <div>
   <img [src]="staticMapUrl" />
   </div>
-   <div class="spot-detail-address">
-  {{ selectedSpot.parkingSpot.address }}
+  <div class="spot-detail-reportedBy">
+  Reported by: {{ selectedSpot.user.username }}
   </div>
-  <button ion-button block round color="secondary" (click)="takeSpot()">Take Spot</button> 
-  <button ion-button block round color="secondary" (click)="reportInvalidSpot()">Report Invalid Spot</button> 
-  <button ion-button block round color="secondary" (click)="navigateToSpot()">Navigate to Spot</button> 
+ 
+  <button class="action-button" color="secondary" (click)="navigateToSpot()">Navigate to Spot</button> 
+  <button class="action-button" (click)="takeSpot()">Take Spot</button> 
+  <button class="action-button" color="secondary" (click)="reportInvalidSpot()">Report Invalid Spot</button> 
+ 
 </ion-content>
