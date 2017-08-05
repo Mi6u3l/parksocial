@@ -90,7 +90,7 @@
             "ionic-plugin-keyboard": {},
             "cordova-plugin-imagepicker": {},
             "com.synconset.imagepicker": {
-                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "user pictures"
+                "PHOTO_LIBRARY_USAGE_DESCRIPTION": "parksocial"
             },
             "cordova-plugin-file": {},
             "cordova-plugin-camera": {

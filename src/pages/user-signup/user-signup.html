@@ -23,7 +23,7 @@
         <ion-input type="password" placeholder="Password" formControlName="password" ></ion-input>
     </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Picture Link" formControlName="picture" ></ion-input>
+        <ion-input type="text" placeholder="Picture" formControlName="picture" disabled></ion-input>
     </ion-item>
      <ion-item>
         Select your picture:
@@ -34,6 +34,9 @@
         {{ error }}
       </p>
     <button ion-button block class="auth-action-button signup-button" type="submit" [disabled]="!signup.valid">Sign up</button>
+    <div class="signing-waiting" *ngIf="signingUp">
+    <ion-spinner name="bubbles"></ion-spinner>
+    </div>
   </form>
   <p class="auth-divider">
     Or

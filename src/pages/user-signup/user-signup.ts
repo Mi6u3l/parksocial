@@ -7,6 +7,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import Raven from 'raven-js';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
+import { ImagePicker } from '@ionic-native/image-picker';
+
 
 @IonicPage()
 @Component({
@@ -29,12 +31,14 @@ export class UserSignupPage {
   captureDataUrl: string;
   error = null;
   signup: FormGroup;
+  signingUp: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private session: SessionService,
-    private camera: Camera) {
+    private camera: Camera,
+    private imagePicker: ImagePicker) {
       this.signup = new FormGroup({
       firstname: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
@@ -50,6 +54,7 @@ export class UserSignupPage {
   }
 
   doSignup() {
+    this.signingUp = true;
     this.user['firstname'] = this.signup.controls.firstname.value;
     this.user['lastname'] = this.signup.controls.lastname.value;
     this.user['email'] = this.signup.controls.email.value;
@@ -91,9 +96,12 @@ export class UserSignupPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     };
 
-    this.camera.getPicture(cameraOptions).then((imageData) => {
+ 
+
+   this.camera.getPicture(cameraOptions).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
       this.captureDataUrl = 'data:image/jpeg;base64,' + imageData;
