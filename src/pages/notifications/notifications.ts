@@ -1,9 +1,9 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AutocompleteComponent } from '../../components/autocomplete/autocomplete';
+import { NotificationProvider } from '../../providers/notification/notification';
 
 declare var google;
-
 
 @IonicPage()
 @Component({
@@ -11,12 +11,11 @@ declare var google;
   templateUrl: 'notifications.html',
 })
 export class NotificationsPage {
- address;
- autocompleteItems;
- autocomplete;
- service = new google.maps.places.AutocompleteService();
- 
-  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private zone: NgZone) {
+  address;
+  autocompleteItems;
+  autocomplete;
+  service = new google.maps.places.AutocompleteService();
+  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private zone: NgZone, private notification: NotificationProvider) {
     this.address = {
       place: ''
     };
@@ -24,36 +23,42 @@ export class NotificationsPage {
     this.autocomplete = {
       query: ''
     };
-  }
-  
-  showAddressModal () {
-    let modal = this.modalCtrl.create(AutocompleteComponent);
-    let me = this;
-    modal.onDidDismiss(data => {
-      this.address.place = data;
+    this.notification.getNotification().subscribe((res) => {
+      if (res.length > 0) {
+        this.autocomplete.query = res[0].address;
+      }
     });
-    modal.present();
-  }
 
+  }
 
   chooseItem(item: any) {
     this.autocomplete.query = item;
     this.autocompleteItems = [];
+    this.notification.deleteNotification().subscribe((res) => {
+      this.notification.createNotification(this.autocomplete.query).subscribe((res) => {
+      });
+    });
+
   }
-  
-  
+
   updateSearch() {
     if (this.autocomplete.query == '') {
       this.autocompleteItems = [];
+      this.notification.deleteNotification().subscribe((res) => {
+      });
       return;
     }
     let me = this;
-    this.service.getPlacePredictions({ input: this.autocomplete.query }, function (predictions, status) {
-      me.autocompleteItems = []; 
+    this.service.getPlacePredictions({
+      input: this.autocomplete.query
+    }, function (predictions, status) {
+      me.autocompleteItems = [];
       me.zone.run(function () {
-        predictions.forEach(function (prediction) {
-          me.autocompleteItems.push(prediction.description);
-        });
+        if (predictions) {
+          predictions.forEach(function (prediction) {
+            me.autocompleteItems.push(prediction.description);
+          });
+        }
       });
     });
   }

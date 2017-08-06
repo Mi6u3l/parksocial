@@ -36,6 +36,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { SentryErrorhandlerProvider } from '../providers/sentry-errorhandler/sentry-errorhandler';
 import { Camera } from '@ionic-native/camera';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { NotificationProvider } from '../providers/notification/notification';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
     SentryErrorhandlerProvider,
     {provide: ErrorHandler, useClass: SentryErrorhandlerProvider},
     Camera,
-    LaunchNavigator
+    LaunchNavigator,
+    NotificationProvider
     
   ],	
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
