@@ -19,6 +19,7 @@ import { ParkingspotDetailPageModule } from '../pages/parkingspot-detail/parking
 import { ParkingspotMyPageModule } from '../pages/parkingspot-my/parkingspot-my.module';
 import { SettingsPageModule } from '../pages/settings/settings.module';
 import { NotificationsPageModule } from '../pages/notifications/notifications.module';
+import { EnvironmentsModule } from './environment-variables/environment-variables.module';
 
 import { Geolocation } from '@ionic-native/geolocation';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
@@ -58,7 +59,8 @@ import { NotificationProvider } from '../providers/notification/notification';
     ParkingspotDetailPageModule,
     ParkingspotMyPageModule,
     SettingsPageModule,
-    NotificationsPageModule
+    NotificationsPageModule,
+    EnvironmentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

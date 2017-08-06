@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject  } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Rx';
 import { SessionService } from '../../providers/session/session';
+import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
 
 
 @Injectable()
 export class NotificationProvider {
-    BASE_URL: string = 'http://localhost:3000'; //'https://parksocial.herokuapp.com'; 
-
+  
   constructor(public http: Http, 
-      private session: SessionService) {
-      console.log('Hello NotificationProvider Provider');
+      private session: SessionService,
+      @Inject(EnvVariables) public envVariables) {
   }
 
   createNotification(address) {
@@ -23,20 +23,19 @@ export class NotificationProvider {
       
     }
   
-    return this.http.post(`${this.BASE_URL}/api/notifications`, userAddress, this.requestOptions())
+    return this.http.post(`${this.envVariables.apiEndpoint}/api/notifications`, userAddress, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   deleteNotification() {
-    console.log('deleting for', this.session.user['_id'])
-    return this.http.delete(`${this.BASE_URL}/api/notifications/${this.session.user['_id']}`, this.requestOptions())
+    return this.http.delete(`${this.envVariables.apiEndpoint}/api/notifications/${this.session.user['_id']}`, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   getNotification() {
-    return this.http.get(`${this.BASE_URL}/api/notifications/${this.session.user['_id']}`, this.requestOptions())
+    return this.http.get(`${this.envVariables.apiEndpoint}/api/notifications/${this.session.user['_id']}`, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }

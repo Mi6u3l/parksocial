@@ -1,22 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject  } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Rx';
 import { SessionService } from '../../providers/session/session';
+import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
 
 @Injectable()
 export class ParkingSpotProvider {
-  BASE_URL: string = 'http://localhost:3000'; //'https://parksocial.herokuapp.com'; 
-
-constructor(public http: Http, 
-      private session: SessionService) {
-    console.log('Hello ParkingSpotProvider Provider');
+  
+ constructor(public http: Http, 
+      private session: SessionService,
+      @Inject(EnvVariables) public envVariables) {
   }
 
 createSpot(spot) {
-    return this.http.post(`${this.BASE_URL}/api/parkingspots`, spot, this.requestOptions())
+    return this.http.post(`${this.envVariables.apiEndpoint}/api/parkingspots`, spot, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
@@ -25,27 +25,27 @@ createSpot(spot) {
 
  takeSpot(user, parkingspotId, valid) {
      valid ? user.valid = true : user.valid = false; 
-     return this.http.put(`${this.BASE_URL}/api/parkingspots/${parkingspotId}`, user, this.requestOptions())
+     return this.http.put(`${this.envVariables.apiEndpoint}/api/parkingspots/${parkingspotId}`, user, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   freeSpot(user, parkingspotId) {
     console.log('parkingspotid', parkingspotId);
-     return this.http.put(`${this.BASE_URL}/api/parkingspot/${parkingspotId}`, user,  this.requestOptions())
+     return this.http.put(`${this.envVariables.apiEndpoint}/api/parkingspot/${parkingspotId}`, user,  this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
   getMyParkingSpot(userid) {
-    return this.http.get(`${this.BASE_URL}/api/parkingspot/${userid}`, this.requestOptions())
+    return this.http.get(`${this.envVariables.apiEndpoint}/api/parkingspot/${userid}`, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }
 
 
  getList() {
-    return this.http.get(`${this.BASE_URL}/api/parkingspots`, this.requestOptions())
+    return this.http.get(`${this.envVariables.apiEndpoint}/api/parkingspots`, this.requestOptions())
       .map((res) => res.json())
       .catch(this.handleError);
   }

@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
+import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
 
 @Injectable()
 export class SessionService implements CanActivate {
-  BASE_URL: string = 'http://localhost:3000'; //'https://parksocial.herokuapp.com'; 
+ 
 
   public user = {};
   public token = '';
@@ -16,8 +17,9 @@ export class SessionService implements CanActivate {
 
   constructor(
     private http: Http,
-    private router: Router
-  ) { }
+    private router: Router,
+    @Inject(EnvVariables) public envVariables)
+   { }
 
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -30,7 +32,7 @@ export class SessionService implements CanActivate {
       let headers = new Headers({ 'Authorization': `JWT ${token}` });
       let options = new RequestOptions({ headers: headers });
 
-      return this.http.get(`${this.BASE_URL}/ping`, options)
+      return this.http.get(`${this.envVariables.apiEndpoint}/ping`, options)
         .map((data) => {
           if (data) {
             this.isAuthenticated = true;
@@ -50,7 +52,7 @@ export class SessionService implements CanActivate {
 
 
   login(user) {
-    return this.http.post(`${this.BASE_URL}/login`, user)
+    return this.http.post(`${this.envVariables.apiEndpoint}/login`, user)
       .map(res => {
         let json = res.json();
         let token = json.token;
@@ -76,7 +78,7 @@ export class SessionService implements CanActivate {
   }
 
   signup(user) {
-    return this.http.post(`${this.BASE_URL}/signup`, user)
+    return this.http.post(`${this.envVariables.apiEndpoint}/signup`, user)
       .map(res => {
         let json = res.json();
         console.log(json);
