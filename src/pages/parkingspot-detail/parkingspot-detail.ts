@@ -51,7 +51,7 @@ export class ParkingspotDetailPage {
     let alert = this.alertController.create({
       title: 'Report Invalid Spot',
       subTitle: 'You have sucessfully reported an invalid spot at: ' + this.selectedSpot['parkingSpot']['address'],
-      buttons: [{ text: 'Thank you', handler: () => this.redirect() }]
+      buttons: [{ text: 'Thank you', handler: () => this.redirectToList() }]
     });
     alert.present();
   }
@@ -63,5 +63,10 @@ export class ParkingspotDetailPage {
   redirect() {
     this.navCtrl.push(ParkingspotMyPage);
   }
+
+   redirectToList() {
+    this.navCtrl.push(ParkingspotListPage);
+  }
+
 
 }
