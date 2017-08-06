@@ -1,6 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { NotificationProvider } from '../../providers/notification/notification';
+import { AlertController } from 'ionic-angular';
 
 declare var google;
 
@@ -14,7 +15,11 @@ export class NotificationsPage {
   autocompleteItems;
   autocomplete;
   service = new google.maps.places.AutocompleteService();
-  constructor(private navCtrl: NavController, private modalCtrl: ModalController, private zone: NgZone, private notification: NotificationProvider) {
+  constructor(private navCtrl: NavController, 
+  private modalCtrl: ModalController, 
+  private zone: NgZone, 
+  private notification: NotificationProvider,
+  private alertController: AlertController) {
     this.address = {
       place: ''
     };
@@ -34,6 +39,12 @@ export class NotificationsPage {
     this.autocompleteItems = [];
     this.notification.deleteNotification().subscribe((res) => {
       this.notification.createNotification(this.autocomplete.query).subscribe((res) => {
+        let alert = this.alertController.create({
+        title: 'New notification',
+        subTitle: 'You have sucessfully setup a notification at ' + item,
+        buttons: ['Cool!']
+        });
+        alert.present();
       });
     });
   }
@@ -42,6 +53,14 @@ export class NotificationsPage {
     if (this.autocomplete.query == '') {
       this.autocompleteItems = [];
       this.notification.deleteNotification().subscribe((res) => {
+        this.notification.createNotification(this.autocomplete.query).subscribe((res) => {
+        let alert = this.alertController.create({
+        title: 'New notification',
+        subTitle: 'You have deleted the existing notification',
+        buttons: ['OK']
+        });
+        alert.present();
+      });
       });
       return;
     }
