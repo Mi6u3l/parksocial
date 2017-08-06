@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ImageLoaderComponent } from './image-loader/image-loader';
-import { AutocompleteComponent } from './autocomplete/autocomplete';
 @NgModule({
-	declarations: [ImageLoaderComponent,
-    AutocompleteComponent],
+	declarations: [ImageLoaderComponent],
 	imports: [],
-	exports: [ImageLoaderComponent,
-    AutocompleteComponent]
+	exports: [ImageLoaderComponent]
 })
 export class ComponentsModule {}

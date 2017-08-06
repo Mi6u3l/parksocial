@@ -1,6 +1,5 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { AutocompleteComponent } from '../../components/autocomplete/autocomplete';
 import { NotificationProvider } from '../../providers/notification/notification';
 
 declare var google;
@@ -28,7 +27,6 @@ export class NotificationsPage {
         this.autocomplete.query = res[0].address;
       }
     });
-
   }
 
   chooseItem(item: any) {
@@ -38,7 +36,6 @@ export class NotificationsPage {
       this.notification.createNotification(this.autocomplete.query).subscribe((res) => {
       });
     });
-
   }
 
   updateSearch() {
