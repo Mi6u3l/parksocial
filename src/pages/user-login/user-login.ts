@@ -73,15 +73,21 @@ export class UserLoginPage {
        profile.picture = "https://graph.facebook.com/" + userId + "/picture?type=small";       
        this.session.fblogin('miguel.bgomes@gmail.com', profile.name, profile.picture).subscribe((data) => {
         //alert(JSON.stringify(response.authResponse));
-        this.navCtrl.push(ParkingspotListPage);
+        let user = {
+          username: profile.name,
+          facebook: true
+        }
+        this.session.login(user, true).subscribe((data) => {  
+            this.navCtrl.push(ParkingspotListPage);
+          },
+          (err) => {
+            console.log(err);
+          });
       },
       (err) => {
         this.error = err;
       });
      })
-  
-    
-
    }, (error) => {
      alert(error);
      console.log(error);

@@ -62,12 +62,6 @@ export class SessionService implements CanActivate {
     return this.http.post(`${this.envVariables.apiEndpoint}/signup`, user)
       .map(res => {
         let json = res.json();
-        this.login(user, true).subscribe((data) => {  
-          console.log(data);
-          },
-          (err) => {
-            console.log(err);
-          });
         return json;
       }).catch(this.handleError);
   }
