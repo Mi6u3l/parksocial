@@ -24,7 +24,8 @@ export class UserSignupPage {
     email: '',
     username: '',
     password: '',
-    picture: ''
+    picture: '',
+    isFacebook: false
   }
 
   userPictureURI: any;
@@ -61,10 +62,9 @@ export class UserSignupPage {
     this.user['username'] = this.signup.controls.username.value;
     this.user['password'] = this.signup.controls.password.value;
     this.userPictureUpload().then(() => {
-      Raven.captureMessage(this.user["picture"], { level: 'info' });
       this.session.signup(this.user).subscribe(
         (data) => {
-          this.session.login(this.user).subscribe(
+          this.session.login(this.user, false).subscribe(
             (data) => {
               this.navCtrl.push(ParkingspotListPage);
             },

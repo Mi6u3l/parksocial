@@ -6,11 +6,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
-
-
 import { UserSignupPageModule } from '../pages/user-signup/user-signup.module';
 import { UserLoginPageModule } from '../pages/user-login/user-login.module';
 import { ReportspotPageModule } from '../pages/reportspot/reportspot.module';
@@ -36,13 +31,11 @@ import { SentryErrorhandlerProvider } from '../providers/sentry-errorhandler/sen
 import { Camera } from '@ionic-native/camera';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { NotificationProvider } from '../providers/notification/notification';
+import { FacebookService } from '../providers/facebook/facebook';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -64,10 +57,7 @@ import { NotificationProvider } from '../providers/notification/notification';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HelloIonicPage,
-    ItemDetailsPage,
-    ListPage
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -84,7 +74,8 @@ import { NotificationProvider } from '../providers/notification/notification';
     {provide: ErrorHandler, useClass: SentryErrorhandlerProvider},
     Camera,
     LaunchNavigator,
-    NotificationProvider
+    NotificationProvider,
+    FacebookService
     
   ],	
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

@@ -50,8 +50,29 @@ export class SessionService implements CanActivate {
     }
   }
 
+  fblogin(email, username, picture) {
+    let user = {
+      firstname: username,
+      lastname: username,
+      username: username,
+      picture: picture,
+      email: email,
+      facebook: true
+    }
+    return this.http.post(`${this.envVariables.apiEndpoint}/signup`, user)
+      .map(res => {
+        let json = res.json();
+        this.login(user, true).subscribe((data) => {  
+          console.log(data);
+          },
+          (err) => {
+            console.log(err);
+          });
+        return json;
+      }).catch(this.handleError);
+  }
 
-  login(user) {
+  login(user, socialLogin) {
     return this.http.post(`${this.envVariables.apiEndpoint}/login`, user)
       .map(res => {
         let json = res.json();
@@ -60,13 +81,11 @@ export class SessionService implements CanActivate {
 
         if (token) {
           this.token = token;
-
-          console.log("Saving user", user._id, "to", this.user);
-          console.log("Received user", user);
           this.user = {
             _id: user._id,
             username: user.username,
-            picture: user.picture
+            picture: user.picture,
+            facebook: socialLogin
           }
           this.isAuthenticated = true;
           localStorage.setItem('token', this.token);
