@@ -24,6 +24,7 @@ export class MyApp {
   rootPage = UserLoginPage;
   pages: Array<{title: string, component: any}>;
   currentUserImageUrl: any;
+  currentUserName: string;
   renderImage: boolean;
    
   constructor(
@@ -79,6 +80,7 @@ export class MyApp {
 
   menuOpened() {
     this.currentUserImageUrl = this.session.user['picture'];
+    this.currentUserName = this.session.user['username'];
     this.renderImage = true;
   }
 

@@ -8,7 +8,7 @@ declare const process: any; // Typescript compiler will complain without this
 
 export function environmentFactory() {
   //return process.env.IONIC_ENV === 'prod' ? prodVariables : devVariables;
-  return devVariables;
+  return prodVariables;
 }
 
 @NgModule({

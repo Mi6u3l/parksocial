@@ -10,7 +10,7 @@
 <ion-content class="list-mini-content">
 
 <div *ngIf="canRender">
- <div class="list-mini">
+ <div class="list-mini" *ngIf="spots">
     <ion-list>
       <button class="list-item" ion-item *ngFor="let spot of spots | orderByDistance" (click)="spotTapped($event, spot)">
         <ion-row no-padding class="content-row one-line">
@@ -25,6 +25,9 @@
         </ion-row>
       </button>
     </ion-list>
+  </div>
+  <div class="nospotsfound" *ngIf="spots.length == 0">
+    No reported parking spots were found, try to adjust the distance on settings.
   </div>
 </div>
 </ion-content>
