@@ -4,3 +4,7 @@ page-notifications .notifications-title {
   padding-top: 0px;
   font-size: 1.2em;
 }
+
+page-notifications .notification-input {
+  font-size: 15px;
+}

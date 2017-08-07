@@ -12,7 +12,7 @@
 </div>
 <ion-list>
     <ion-item>
-      <ion-input [(ngModel)]="autocomplete.query" (input)="updateSearch()"  type="text" placeholder="Pick an address"></ion-input>
+      <ion-input class="notification-input" [(ngModel)]="autocomplete.query" (input)="updateSearch()"  type="text" placeholder="Pick an address"></ion-input>
     </ion-item>
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
       {{ item }}
