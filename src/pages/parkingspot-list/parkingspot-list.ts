@@ -16,7 +16,6 @@ export class ParkingspotListPage {
   spots: Array<any>;
   canRender: Boolean = false;
 
-
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   private parkingSpot: ParkingSpotProvider,
@@ -25,6 +24,15 @@ export class ParkingspotListPage {
   }
 
   ionViewDidLoad() {
+    this.getParkingSpotsList();
+
+    this.session.getNewParkingSpots().subscribe((data) => {
+        console.log('time to fech list again');
+        this.getParkingSpotsList();
+    });
+  }
+
+  getParkingSpotsList() {
       this.parkingSpot.getList()
       .subscribe((_spots) => {
        return this.geolocation.getCurrentPosition().then((position) => {
@@ -33,7 +41,7 @@ export class ParkingspotListPage {
                   position.coords.latitude,
                   position.coords.longitude,
                   spot['parkingSpot']['latitude'],
-                  spot['parkingSpot']['longitude']).toFixed(1) //);
+                  spot['parkingSpot']['longitude']).toFixed(1)
           })     
       }).then(() => {
           this.spots = _spots.filter((spot) => {
@@ -43,8 +51,7 @@ export class ParkingspotListPage {
       });
     });
   }
-  
-  
+    
 
   spotTapped(event, spot) {
     this.navCtrl.push(ParkingspotDetailPage, {

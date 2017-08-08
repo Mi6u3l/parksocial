@@ -5,11 +5,12 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
 import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
+import * as io from 'socket.io-client';
+import { Socket } from 'ng2-socket-io';
 
 @Injectable()
 export class SessionService implements CanActivate {
- 
-
+  
   public user = {};
   public token = '';
   public isAuthenticated = false;
@@ -18,6 +19,7 @@ export class SessionService implements CanActivate {
   constructor(
     private http: Http,
     private router: Router,
+    private socket: Socket,
     @Inject(EnvVariables) public envVariables)
    { }
 
@@ -108,4 +110,11 @@ export class SessionService implements CanActivate {
 
     this.router.navigate(['/login']);
   }
+
+   getNewParkingSpots() {
+        return this.socket
+            .fromEvent('newspot')
+            .map( data => console.log(data) );
+    }
+
 }

@@ -56,7 +56,8 @@ export class ReportspotPage {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
+      position: this.map.getCenter(),
+      draggable:true
     });
     let geocoder = new google.maps.Geocoder;
     geocoder.geocode({

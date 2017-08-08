@@ -17,7 +17,7 @@
   <img [src]="staticMapUrl" />
   </div>
   <div class="spot-detail-reportedBy">
-  Reported by: {{ selectedSpot.user.username }}
+  Reported by: {{ selectedSpot.user.username }} at  {{ parkingSpotUpdatedAt }}
   </div>
  
   <button class="action-button" color="secondary" (click)="navigateToSpot()">Navigate to Spot</button> 
