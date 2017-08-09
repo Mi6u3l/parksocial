@@ -33,9 +33,11 @@ export class NotificationsPage {
   }
 
   chooseItem(item: any) {
+    console.log('here');
     this.autocomplete.query = item;
     this.autocompleteItems = [];
     this.notification.deleteNotification().subscribe((res) => {
+      console.log('here2');
       this.notification.createNotification(this.autocomplete.query).subscribe((res) => {
         let alert = this.alertController.create({
         title: 'New notification',

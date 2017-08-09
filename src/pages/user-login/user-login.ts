@@ -53,6 +53,7 @@ export class UserLoginPage {
         this.navCtrl.push(ParkingspotListPage);
       },
       (err) => {
+        this.loginIn = false;
         this.error = err;
       });
   }
