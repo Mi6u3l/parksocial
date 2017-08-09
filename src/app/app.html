@@ -24,6 +24,10 @@
          <ion-icon *ngIf="p.icon" name="{{p.icon}}" item-left></ion-icon>
         {{p.title}}
       </button>
+      <button ion-item  class="item-title" (click)="logout()">
+         <ion-icon name="log-out" item-left></ion-icon>
+          Logout
+      </button>
     </ion-list>
   </ion-content>
 

@@ -106,8 +106,6 @@ export class SessionService implements CanActivate {
     this.user = {}
     this.isAuthenticated = false;
     localStorage.removeItem('token');
-
-    this.router.navigate(['/login']);
   }
 
    getNewParkingSpots() {

@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav, App } from 'ionic-angular';
 import { ReportspotPage } from '../pages/reportspot/reportspot';
 import { ParkingspotListPage } from '../pages/parkingspot-list/parkingspot-list';
 import { ParkingspotMyPage } from '../pages/parkingspot-my/parkingspot-my';
@@ -31,7 +30,8 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public session: SessionService
+    public session: SessionService,
+    public app: App
   ) {
     this.initializeApp();
 
@@ -88,6 +88,12 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+   this.session.logout();
+   this.menu.close();
+   this.app.getRootNav().setRoot(UserLoginPage);
   }
 
   
