@@ -1,7 +1,5 @@
 import { Http } from '@angular/http';  
 import { Injectable } from '@angular/core';
- 
-import { Observable } from 'rxjs/Rx';  
 import 'rxjs/add/operator/map';
  
 import { Facebook } from 'ionic-native';
@@ -10,7 +8,7 @@ import { Facebook } from 'ionic-native';
 export class FacebookService {
  APP_ID: number = 107369209959301
  
- constructor(private http: Http) {
+ constructor() {
      
  }
  

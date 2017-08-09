@@ -5,10 +5,7 @@ import { UserLoginPage } from '../user-login/user-login';
 import firebase from 'firebase';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import Raven from 'raven-js';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
-import { ImagePicker } from '@ionic-native/image-picker';
-
 
 @IonicPage()
 @Component({
@@ -38,8 +35,7 @@ export class UserSignupPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private session: SessionService,
-    private camera: Camera,
-    private imagePicker: ImagePicker) {
+    private camera: Camera) {
       this.signup = new FormGroup({
       firstname: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),

@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import Raven from 'raven-js';
 
 @Pipe({
   name: 'orderByDistance',

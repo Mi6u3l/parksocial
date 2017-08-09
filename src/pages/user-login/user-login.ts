@@ -5,7 +5,7 @@ import { SessionService } from '../../providers/session/session';
 import { ParkingspotListPage } from '../parkingspot-list/parkingspot-list';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { FacebookService } from '../../providers/facebook/facebook';
-import { Facebook, NativeStorage } from 'ionic-native';
+import { Facebook } from 'ionic-native';
 
 @IonicPage()
 @Component({
@@ -65,7 +65,6 @@ export class UserLoginPage {
   doFacebookLogin() {
    this.loginIn = true;
    let permissions = new Array<string>();
-   let nav = this.navCtrl;
    permissions = ["public_profile"];
     Facebook.login(permissions).then((response) => {
      let userId = response.authResponse.userID;
@@ -75,7 +74,6 @@ export class UserLoginPage {
      .then((profile) => {
        profile.picture = "https://graph.facebook.com/" + userId + "/picture?type=small";       
        this.session.fblogin('miguel.bgomes@gmail.com', profile.name, profile.picture).subscribe((data) => {
-        //alert(JSON.stringify(response.authResponse));
         let user = {
           username: profile.name,
           facebook: true

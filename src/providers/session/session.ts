@@ -5,7 +5,6 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { Router, CanActivate } from '@angular/router';
 import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
-import * as io from 'socket.io-client';
 import { Socket } from 'ng2-socket-io';
 
 @Injectable()
