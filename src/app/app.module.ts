@@ -41,7 +41,7 @@ const config: SocketIoConfig = { url: 'ws://parksocial.herokuapp.com', options: 
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,

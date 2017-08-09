@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-/**
- * Generated class for the LoadingModalComponent component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
 @Component({
   selector: 'loading-modal',
-  templateUrl: 'loading-modal.html'
+  templateUrl: 'loading-modal.html',
+  
 })
 export class LoadingModalComponent {
-
-  text: string;
+  isBusy;
 
   constructor() {
-    console.log('Hello LoadingModalComponent Component');
-    this.text = 'Hello World';
+    this.isBusy = false;
+  }
+ 
+  show(){
+    this.isBusy = true;
+  }
+ 
+  hide(){
+    this.isBusy = false;
+  }
+ 
+  ngOnInit() {
+    console.log('hello loading modal');
   }
 
 }

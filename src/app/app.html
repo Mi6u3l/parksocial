@@ -21,6 +21,7 @@
     </div>
     <ion-list>
       <button ion-item *ngFor="let p of pages" class="item-title" (click)="openPage(p)">
+         <ion-icon *ngIf="p.icon" name="{{p.icon}}" item-left></ion-icon>
         {{p.title}}
       </button>
     </ion-list>

@@ -18,3 +18,33 @@ page-user-login .login-content .alt-options .signup-button {
   font-weight: 500;
   color: #ae75e7;
 }
+
+page-user-login .container {
+  z-index: -1;
+  transition: z-index 0.2s step-end;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+page-user-login .container.busy {
+  z-index: 9999;
+  transition: z-index 0.2s step-start;
+}
+
+page-user-login .container.busy .backdrop {
+  opacity: 0.3;
+}
+
+page-user-login .container .backdrop {
+  opacity: 0.01;
+  transition: opacity 0.2s;
+}
+
+page-user-login .container ion-spinner {
+  width: 60px;
+  height: 60px;
+}

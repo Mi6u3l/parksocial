@@ -20,13 +20,12 @@ import { SessionService } from '../providers/session/session';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
   rootPage = UserLoginPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, icon: string, component: any}>;
   currentUserImageUrl: any;
   currentUserName: string;
   renderImage: boolean;
-   
+  
   constructor(
     public platform: Platform,
     public menu: MenuController,
@@ -39,11 +38,11 @@ export class MyApp {
     
     // set our app's pages
     this.pages = [
-      { title: 'Available Parking Spots', component: ParkingspotListPage },
-      { title: 'Report Parking Spot', component: ReportspotPage },
-      { title: 'My Parking Spot', component: ParkingspotMyPage },
-      { title: 'My Notifications', component: NotificationsPage },
-      { title: 'Settings', component: SettingsPage },
+      { title: 'Available Parking Spots', icon: 'car', component: ParkingspotListPage },
+      { title: 'Report Parking Spot', icon: 'text', component: ReportspotPage },
+      { title: 'My Parking Spot', icon: 'pin', component: ParkingspotMyPage },
+      { title: 'My Notifications', icon: 'notifications', component: NotificationsPage },
+      { title: 'Settings', icon: 'settings', component: SettingsPage },
       
     ];
 

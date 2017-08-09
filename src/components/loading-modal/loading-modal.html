@@ -1,4 +1,4 @@
-<!-- Generated template for the LoadingModalComponent component -->
-<div>
-  {{text}}
+<div class="container" [ngClass]="{'busy': isBusy}">
+    <div class="backdrop"></div>
+    <ion-spinner></ion-spinner>
 </div>

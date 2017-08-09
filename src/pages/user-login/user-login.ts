@@ -14,6 +14,7 @@ import { Facebook, NativeStorage } from 'ionic-native';
 })
 export class UserLoginPage {
   login: FormGroup;
+  loginIn: boolean = false;
   user: Object = {
     username: '',
     password: '',
@@ -44,6 +45,7 @@ export class UserLoginPage {
 
 
   doLogin() {
+    this.loginIn = true;
     this.user['username'] = this.login.controls.username.value;
     this.user['password'] = this.login.controls.password.value;
     this.session.login(this.user, false).subscribe(
@@ -61,6 +63,7 @@ export class UserLoginPage {
 
 
   doFacebookLogin() {
+   this.loginIn = true;
    let permissions = new Array<string>();
    let nav = this.navCtrl;
    permissions = ["public_profile"];

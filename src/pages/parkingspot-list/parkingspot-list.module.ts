@@ -2,12 +2,14 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ParkingspotListPage } from './parkingspot-list';
 import { ImageLoaderComponent } from '../../components/image-loader/image-loader';
+import { LoadingModalComponent } from '../../components/loading-modal/loading-modal';
 import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
     ParkingspotListPage,
-    ImageLoaderComponent  
+    ImageLoaderComponent,
+    LoadingModalComponent  
   ],
   imports: [
     IonicPageModule.forChild(ParkingspotListPage),
