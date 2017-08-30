@@ -39,8 +39,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Available Parking Spots', icon: 'car', component: ParkingspotListPage },
-      { title: 'Report Parking Spot', icon: 'text', component: ReportspotPage },
       { title: 'My Parking Spot', icon: 'pin', component: ParkingspotMyPage },
+      { title: 'Report Parking Spot', icon: 'text', component: ReportspotPage },
       { title: 'My Notifications', icon: 'notifications', component: NotificationsPage },
       { title: 'Settings', icon: 'settings', component: SettingsPage },
       
