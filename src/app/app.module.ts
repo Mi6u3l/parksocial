@@ -33,8 +33,6 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { NotificationProvider } from '../providers/notification/notification';
 import { FacebookService } from '../providers/facebook/facebook';
 
-import { EnvVariables } from '../app/environment-variables/environment-variables.token';
-
 import { SocketIoModule, SocketIoConfig } from 'ng2-socket-io';
 const config: SocketIoConfig = { url: 'ws://parksocial.herokuapp.com', options: {} };
 

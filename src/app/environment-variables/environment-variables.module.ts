@@ -5,8 +5,7 @@ import { prodVariables } from './production';
 
 
 export function environmentFactory() {
-  //return process.env.IONIC_ENV === 'prod' ? prodVariables : devVariables;
-  return prodVariables;
+  return process.env.IONIC_ENV === 'prod' ? prodVariables : devVariables;
 }
 
 @NgModule({
