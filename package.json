@@ -42,6 +42,7 @@
         "angularfire2": "^4.0.0-rc.1",
         "aws-sdk": "^2.92.0",
         "axios": "^0.16.2",
+        "com.synconset.imagepicker": "~2.1.8",
         "cordova-browser": "^4.1.0",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-actionsheet": "^2.3.3",
@@ -115,8 +116,8 @@
             },
             "cordova-plugin-file": {},
             "cordova-plugin-camera": {
-                "CAMERA_USAGE_DESCRIPTION": " ",
-                "PHOTOLIBRARY_USAGE_DESCRIPTION": " "
+                "PHOTOLIBRARY_USAGE_DESCRIPTION": "photo for user profile",
+                "CAMERA_USAGE_DESCRIPTION": " "
             },
             "cordova-plugin-inappbrowser": {},
             "uk.co.workingedge.phonegap.plugin.launchnavigator": {},

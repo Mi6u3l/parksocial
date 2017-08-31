@@ -83,8 +83,8 @@
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="parksocial" />
     </plugin>
     <plugin name="cordova-plugin-camera" spec="^2.4.1">
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="photo for user profile" />
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
     </plugin>
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
