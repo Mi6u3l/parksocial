@@ -2,7 +2,11 @@
 
 In a nutshell Park Social is a Hybrid App built with Ionic2, that allows to build communities to share parking spaces around your city.
 
-<h2>Technology:</h2>
+## To run it
+
+"ionic serve" or "ionic cordova run browser"
+
+## Technology
 <ul>
     <li>Angular2</li>
     <li>Ionic2</li>
